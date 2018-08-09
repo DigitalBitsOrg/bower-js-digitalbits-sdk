@@ -1,10 +1,10 @@
 {
-  "name": "stellar-sdk",
-  "homepage": "https://github.com/stellar/bower-js-stellar-sdk",
+  "name": "digitalbits-sdk",
+  "homepage": "https://github.com/DigitalBitsOrg/bower-js-digitalbits-sdk",
   "authors": [
     "Stellar Development Foundation"
   ],
-  "description": "Main Stellar client library for the Javascript language",
+  "description": "Main DigitalBits client library for the Javascript language",
   "main": "./stellar-sdk.min.js",
   "keywords": [
     "stellar"
