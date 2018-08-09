@@ -1,3 +1,3 @@
-# js-stellar-sdk for Bower
+# js-digitalbits-sdk for Bower
 
-Packaged version of [js-stellar-sdk](https://github.com/stellar/js-stellar-sdk) for front-end development.
+Packaged version of [js-digitalbits-sdk](https://github.com/DigitalBitsOrg/bower-js-digitalbits-sdk) for front-end development.
