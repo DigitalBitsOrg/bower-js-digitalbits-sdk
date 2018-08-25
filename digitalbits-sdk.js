@@ -35593,7 +35593,7 @@ var DigitalBitsSdk =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	//  This module provides the signing functionality used by the stellar network
+	//  This module provides the signing functionality used by the DigitalBits network
 	//  The code below may look a little strange... this is because we try to provide
 	//  the most efficient signing method possible.  First, we try to load the
 	//  native ed25519 package for node.js environments, and if that fails we
@@ -38376,7 +38376,7 @@ var DigitalBitsSdk =
 	      value: function fromPublicKey(publicKey) {
 	        publicKey = StrKey.decodeEd25519PublicKey(publicKey);
 	        if (publicKey.length !== 32) {
-	          throw new Error("Invalid Stellar public key");
+	          throw new Error("Invalid DigitalBits public key");
 	        }
 	        return new this({ type: "ed25519", publicKey: publicKey });
 	      }
@@ -38417,8 +38417,8 @@ var DigitalBitsSdk =
 
 	/**
 	 * Contains passphrases for common networks:
-	 * * `Networks.PUBLIC`: `Public Global Stellar Network ; September 2015`
-	 * * `Networks.TESTNET`: `Test SDF Network ; September 2015`
+	 * * `Networks.PUBLIC`: `Live DigitalBits Network ; March 2018`
+	 * * `Networks.TESTNET`: `Test DigitalBits Network ; December 2017`
 	 * @type {{PUBLIC: string, TESTNET: string}}
 	 */
 	var Networks = {
@@ -38431,7 +38431,7 @@ var DigitalBitsSdk =
 
 	/**
 	 * The Network class provides helper methods to get the passphrase or id for different
-	 * stellar networks.  It also provides the {@link Network.current} class method that returns the network
+	 * digitalbits networks.  It also provides the {@link Network.current} class method that returns the network
 	 * that will be used by this process for the purposes of generating signatures.
 	 *
 	 * You should select network your app will use before adding the first signature. You can use the `use`,
@@ -38476,7 +38476,7 @@ var DigitalBitsSdk =
 			usePublicNetwork: {
 
 				/**
-	    * Use Stellar Public Network
+	    * Use DigitalBits Public Network
 	    */
 
 				value: function usePublicNetwork() {
@@ -38743,7 +38743,7 @@ var DigitalBitsSdk =
 	    isValidEd25519PublicKey: {
 
 	      /**
-	       * Returns true if the given Stellar public key is a valid ed25519 public key.
+	       * Returns true if the given DigitalBits public key is a valid ed25519 public key.
 	       * @param {string} publicKey public key to check
 	       * @returns {boolean}
 	       */
@@ -38779,7 +38779,7 @@ var DigitalBitsSdk =
 	    isValidEd25519SecretSeed: {
 
 	      /**
-	       * Returns true if the given Stellar secret key is a valid ed25519 secret seed.
+	       * Returns true if the given DigitalBits secret key is a valid ed25519 secret seed.
 	       * @param {string} seed seed to check
 	       * @returns {boolean}
 	       */
@@ -40228,7 +40228,7 @@ var DigitalBitsSdk =
 	      /**
 	       * Returns the "signature base" of this transaction, which is the value
 	       * that, when hashed, should be signed to create a signature that
-	       * validators on the Stellar Network will accept.
+	       * validators on the DigitalBits Network will accept.
 	       *
 	       * It is composed of a 4 prefix bytes followed by the xdr-encoded form
 	       * of this transaction.
@@ -40320,7 +40320,7 @@ var DigitalBitsSdk =
 	 * When set using `{@link Operation.setOptions}` option, requires the issuing account to
 	 * give other accounts permission before they can hold the issuing account’s credit.
 	 * @constant
-	 * @see [Account flags](https://www.stellar.org/developers/guides/concepts/accounts.html#flags)
+	 * @see [Account flags](https://developer.digitalbits.io/guides/concepts/accounts.html#flags)
 	 */
 	var AuthRequiredFlag = 1 << 0;
 	exports.AuthRequiredFlag = AuthRequiredFlag;
@@ -40328,7 +40328,7 @@ var DigitalBitsSdk =
 	 * When set using `{@link Operation.setOptions}` option, allows the issuing account to
 	 * revoke its credit held by other accounts.
 	 * @constant
-	 * @see [Account flags](https://www.stellar.org/developers/guides/concepts/accounts.html#flags)
+	 * @see [Account flags](https://developer.digitalbits.io/guides/concepts/accounts.html#flags)
 	 */
 	var AuthRevocableFlag = 1 << 1;
 	exports.AuthRevocableFlag = AuthRevocableFlag;
@@ -40336,13 +40336,13 @@ var DigitalBitsSdk =
 	 * When set using `{@link Operation.setOptions}` option, then none of the authorization flags
 	 * can be set and the account can never be deleted.
 	 * @constant
-	 * @see [Account flags](https://www.stellar.org/developers/guides/concepts/accounts.html#flags)
+	 * @see [Account flags](https://developer.digitalbits.io/guides/concepts/accounts.html#flags)
 	 */
 	var AuthImmutableFlag = 1 << 2;
 
 	exports.AuthImmutableFlag = AuthImmutableFlag;
 	/**
-	 * `Operation` class represents [operations](https://www.stellar.org/developers/learn/concepts/operations.html) in Stellar network.
+	 * `Operation` class represents [operations](https://developer.digitalbits.io/learn/concepts/operations.html) in DigitalBits network.
 	 * Use one of static methods to create operations:
 	 * * `{@link Operation.createAccount}`
 	 * * `{@link Operation.payment}`
@@ -40371,7 +40371,7 @@ var DigitalBitsSdk =
 	       * @param {object} opts
 	       * @param {string} opts.destination - Destination account ID to create an account for.
 	       * @param {string} opts.startingBalance - Amount in XLM the account should be funded for. Must be greater
-	       *                                   than the [reserve balance amount](https://www.stellar.org/developers/learn/concepts/fees.html).
+	       *                                   than the [reserve balance amount](https://developer.digitalbits.io/learn/concepts/fees.html).
 	       * @param {string} [opts.source] - The source account for the payment. Defaults to the transaction's source account.
 	       * @returns {xdr.CreateAccountOp}
 	       */
@@ -40592,7 +40592,7 @@ var DigitalBitsSdk =
 	       * @param {string} [opts.homeDomain] - sets the home domain used for reverse federation lookup.
 	       * @param {string} [opts.source] - The source account (defaults to transaction source).
 	       * @returns {xdr.SetOptionsOp}
-	       * @see [Account flags](https://www.stellar.org/developers/guides/concepts/accounts.html#flags)
+	       * @see [Account flags](https://developer.digitalbits.io/guides/concepts/accounts.html#flags)
 	       */
 
 	      value: function setOptions(opts) {
@@ -41257,7 +41257,7 @@ var DigitalBitsSdk =
 	       * * `credit_alphanum4`
 	       * * `credit_alphanum12`
 	       *
-	       * @see [Assets concept](https://www.stellar.org/developers/learn/concepts/assets.html)
+	       * @see [Assets concept](https://developer.digitalbits.io/learn/concepts/assets.html)
 	       * @returns {string}
 	       */
 
@@ -44803,7 +44803,7 @@ var DigitalBitsSdk =
 	 *
 	 * @param {string} type - `MemoNone`, `MemoID`, `MemoText`, `MemoHash` or `MemoReturn`
 	 * @param {*} value - `string` for `MemoID`, `MemoText`, buffer of hex string for `MemoHash` or `MemoReturn`
-	 * @see [Transactions concept](https://www.stellar.org/developers/learn/concepts/transactions.html)
+	 * @see [Transactions concept](https://developer.digitalbits.io/learn/concepts/transactions.html)
 	 * @class Memo
 	 */
 
@@ -47638,10 +47638,10 @@ var DigitalBitsSdk =
 	/**
 	 * Create a new Account object.
 	 *
-	 * `Account` represents a single account in Stellar network and its sequence number.
+	 * `Account` represents a single account in DigitalBits network and its sequence number.
 	 * Account tracks the sequence number as it is used by {@link TransactionBuilder}.
-	 * See [Accounts](https://stellar.org/developers/learn/concepts/accounts.html) for more information about how
-	 * accounts work in Stellar.
+	 * See [Accounts](https://developer.digitalbits.io/learn/concepts/accounts.html) for more information about how
+	 * accounts work in digitalbits.
 	 * @constructor
 	 * @param {string} accountId ID of the account (ex. `GB3KJPLFUYN5VL6R3GU3EGCGVCKFDSD7BEDX42HWG5BWFKB3KQGJJRMA`)
 	 * @param {string} sequence current sequence number of the account
@@ -47665,7 +47665,7 @@ var DigitalBitsSdk =
 	    accountId: {
 
 	      /**
-	       * Returns Stellar account ID, ex. `GB3KJPLFUYN5VL6R3GU3EGCGVCKFDSD7BEDX42HWG5BWFKB3KQGJJRMA`
+	       * Returns DigitalBits account ID, ex. `GB3KJPLFUYN5VL6R3GU3EGCGVCKFDSD7BEDX42HWG5BWFKB3KQGJJRMA`
 	       * @returns {string}
 	       */
 
