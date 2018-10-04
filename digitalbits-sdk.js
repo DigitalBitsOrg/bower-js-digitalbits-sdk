@@ -5551,10 +5551,10 @@ var DigitalBitsSdk =
 
 	exports.SUBMIT_TRANSACTION_TIMEOUT = SUBMIT_TRANSACTION_TIMEOUT;
 	/**
-	 * Server handles the network connection to a [Horizon](https://developer.digitalbits.io/horizon/learn/index.html)
+	 * Server handles the network connection to a [Frontier](https://developer.digitalbits.io/frontier/learn/index.html)
 	 * instance and exposes an interface for requests to that instance.
 	 * @constructor
-	 * @param {string} serverURL Horizon Server URL (ex. `https://horizon.testnet.digitalbits.io`).
+	 * @param {string} serverURL Frontier Server URL (ex. `https://frontier.testnet.digitalbits.io`).
 	 * @param {object} [opts]
 	 * @param {boolean} [opts.allowHttp] - Allow connecting to http servers, default: `false`. This must be set to false in production deployments! You can also use {@link Config} class to set this globally.
 	 */
@@ -5573,15 +5573,15 @@ var DigitalBitsSdk =
 	        }
 
 	        if (this.serverURL.protocol() != 'https' && !allowHttp) {
-	            throw new Error('Cannot connect to insecure horizon server');
+	            throw new Error('Cannot connect to insecure frontier server');
 	        }
 	    }
 
 	    /**
 	     * Submits a transaction to the network.
-	     * @see [Post Transaction](https://developer.digitalbits.io/horizon/reference/transactions-create.html)
+	     * @see [Post Transaction](https://developer.digitalbits.io/frontier/reference/transactions-create.html)
 	     * @param {Transaction} transaction - The transaction to submit.
-	     * @returns {Promise} Promise that resolves or rejects with response from horizon.
+	     * @returns {Promise} Promise that resolves or rejects with response from frontier.
 	     */
 
 	    _createClass(Server, [{
@@ -5601,7 +5601,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link AccountCallBuilder} object configured by a current Horizon server configuration.
+	         * Returns new {@link AccountCallBuilder} object configured by a current Frontier server configuration.
 	         * @returns {AccountCallBuilder}
 	         */
 	    }, {
@@ -5611,7 +5611,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link LedgerCallBuilder} object configured by a current Horizon server configuration.
+	         * Returns new {@link LedgerCallBuilder} object configured by a current Frontier server configuration.
 	         * @returns {LedgerCallBuilder}
 	         */
 	    }, {
@@ -5621,7 +5621,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link TransactionCallBuilder} object configured by a current Horizon server configuration.
+	         * Returns new {@link TransactionCallBuilder} object configured by a current Frontier server configuration.
 	         * @returns {TransactionCallBuilder}
 	         */
 	    }, {
@@ -5654,7 +5654,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link OrderbookCallBuilder} object configured by a current Horizon server configuration.
+	         * Returns new {@link OrderbookCallBuilder} object configured by a current Frontier server configuration.
 	         * @param {Asset} selling Asset being sold
 	         * @param {Asset} buying Asset being bought
 	         * @returns {OrderbookCallBuilder}
@@ -5666,7 +5666,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link TradesCallBuilder} object configured by a current Horizon server configuration.
+	         * Returns new {@link TradesCallBuilder} object configured by a current Frontier server configuration.
 	         * @returns {TradesCallBuilder}
 	         */
 	    }, {
@@ -5676,7 +5676,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link OperationCallBuilder} object configured by a current Horizon server configuration.
+	         * Returns new {@link OperationCallBuilder} object configured by a current Frontier server configuration.
 	         * @returns {OperationCallBuilder}
 	         */
 	    }, {
@@ -5696,11 +5696,11 @@ var DigitalBitsSdk =
 	         * * The source address
 	         * * The asset and amount that the destination account should receive
 	         *
-	         * As part of the search, horizon will load a list of assets available to the source address and will find any
+	         * As part of the search, frontier will load a list of assets available to the source address and will find any
 	         * payment paths from those source assets to the desired destination asset. The search's amount parameter will be
 	         * used to determine if there a given path can satisfy a payment of the desired amount.
 	         *
-	         * Returns new {@link PathCallBuilder} object configured with the current Horizon server configuration.
+	         * Returns new {@link PathCallBuilder} object configured with the current Frontier server configuration.
 	         *
 	         * @param {string} source The sender's account ID. Any returned path will use a source that the sender can hold.
 	         * @param {string} destination The destination account ID that any returned path should use.
@@ -5715,7 +5715,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link PaymentCallBuilder} object configured with the current Horizon server configuration.
+	         * Returns new {@link PaymentCallBuilder} object configured with the current Frontier server configuration.
 	         * @returns {PaymentCallBuilder}
 	         */
 	    }, {
@@ -5725,7 +5725,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link EffectCallBuilder} object configured with the current Horizon server configuration.
+	         * Returns new {@link EffectCallBuilder} object configured with the current Frontier server configuration.
 	         * @returns {EffectCallBuilder}
 	         */
 	    }, {
@@ -5735,7 +5735,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link FriendbotBuilder} object configured with the current Horizon server configuration.
+	         * Returns new {@link FriendbotBuilder} object configured with the current Frontier server configuration.
 	         * @returns {FriendbotBuilder}
 	         * @private
 	         */
@@ -5746,7 +5746,7 @@ var DigitalBitsSdk =
 	        }
 
 	        /**
-	         * Returns new {@link AssetsCallBuilder} object configured with the current Horizon server configuration.
+	         * Returns new {@link AssetsCallBuilder} object configured with the current Frontier server configuration.
 	         * @returns {AssetsCallBuilder}
 	         */
 	    }, {
@@ -5775,7 +5775,7 @@ var DigitalBitsSdk =
 	         * @param {long} start_time lower time boundary represented as millis since epoch
 	         * @param {long} end_time upper time boundary represented as millis since epoch
 	         * @param {long} resolution segment duration as millis since epoch. *Supported values are 5 minutes (300000), 15 minutes (900000), 1 hour (3600000), 1 day (86400000) and 1 week (604800000).
-	         * Returns new {@link TradeAggregationCallBuilder} object configured with the current Horizon server configuration.
+	         * Returns new {@link TradeAggregationCallBuilder} object configured with the current Frontier server configuration.
 	         * @returns {TradeAggregationCallBuilder}
 	         */
 	    }, {
@@ -5817,10 +5817,10 @@ var DigitalBitsSdk =
 	   * Creates a new {@link AccountCallBuilder} pointed to server defined by serverUrl.
 	   *
 	   * Do not create this object directly, use {@link Server#accounts}.
-	   * @see [All Accounts](https://developer.digitalbits.io/horizon/reference/accounts-all.html)
+	   * @see [All Accounts](https://developer.digitalbits.io/frontier/reference/accounts-all.html)
 	   * @constructor
 	   * @extends CallBuilder
-	   * @param {string} serverUrl Horizon server URL.
+	   * @param {string} serverUrl Frontier server URL.
 	   */
 
 	  function AccountCallBuilder(serverUrl) {
@@ -5834,7 +5834,7 @@ var DigitalBitsSdk =
 	   * Returns information and links relating to a single account.
 	   * The balances section in the returned JSON will also list all the trust lines this account has set up.
 	   *
-	   * @see [Account Details](https://developer.digitalbits.io/horizon/reference/accounts-single.html)
+	   * @see [Account Details](https://developer.digitalbits.io/frontier/reference/accounts-single.html)
 	   * @param {string} id For example: `GDGQVOKHW4VEJRU2TETD6DBRKEO5ERCNF353LW5WBFW3JJWQ2BRQ6KDD`
 	   * @returns {AccountCallBuilder}
 	   */
@@ -5935,7 +5935,7 @@ var DigitalBitsSdk =
 	    /**
 	     * Creates an EventSource that listens for incoming messages from the server. To stop listening for new
 	     * events call the function returned by this method.
-	     * @see [Horizon Response Format](https://developer.digitalbits.io/horizon/learn/responses.html)
+	     * @see [Frontier Response Format](https://developer.digitalbits.io/frontier/learn/responses.html)
 	     * @see [MDN EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
 	     * @param {object} [options] EventSource options.
 	     * @param {function} [options.onmessage] Callback function to handle incoming messages.
@@ -6127,7 +6127,7 @@ var DigitalBitsSdk =
 
 	    /**
 	     * Adds `cursor` parameter to the current call. Returns the CallBuilder object on which this method has been called.
-	     * @see [Paging](https://developer.digitalbits.io/horizon/learn/paging.html)
+	     * @see [Paging](https://developer.digitalbits.io/frontier/learn/paging.html)
 	     * @param {string} cursor A cursor is a value that points to a specific location in a collection of resources.
 	     */
 	  }, {
@@ -6139,7 +6139,7 @@ var DigitalBitsSdk =
 
 	    /**
 	     * Adds `limit` parameter to the current call. Returns the CallBuilder object on which this method has been called.
-	     * @see [Paging](https://developer.digitalbits.io/horizon/learn/paging.html)
+	     * @see [Paging](https://developer.digitalbits.io/frontier/learn/paging.html)
 	     * @param {number} number Number of records the server should return.
 	     */
 	  }, {
@@ -18111,7 +18111,7 @@ var DigitalBitsSdk =
 	  // Can typed array instances can be augmented?
 	  try {
 	    var arr = new Uint8Array(1)
-	    arr.__proto__ = {__proto__: Uint8Array.prototype, foo: function () { return 42 }}
+	    arr.__proto__ = { __proto__: Uint8Array.prototype, foo: function () { return 42 } }
 	    return arr.foo() === 42
 	  } catch (e) {
 	    return false
@@ -23264,6 +23264,7 @@ var DigitalBitsSdk =
 	        } else {
 	            async.settlePromises(this);
 	        }
+	        this._dereferenceTrace();
 	    }
 	};
 
@@ -23358,7 +23359,7 @@ var DigitalBitsSdk =
 	__webpack_require__(217)(
 	    Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
 	Promise.Promise = Promise;
-	Promise.version = "3.5.1";
+	Promise.version = "3.5.2";
 	__webpack_require__(218)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
 	__webpack_require__(219)(Promise);
 	__webpack_require__(220)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
@@ -23602,8 +23603,12 @@ var DigitalBitsSdk =
 	    /*jshint -W027,-W055,-W031*/
 	    function FakeConstructor() {}
 	    FakeConstructor.prototype = obj;
-	    var l = 8;
-	    while (l--) new FakeConstructor();
+	    var receiver = new FakeConstructor();
+	    function ic() {
+	        return typeof receiver.foo;
+	    }
+	    ic();
+	    ic();
 	    return obj;
 	    eval(obj);
 	}
@@ -24006,24 +24011,28 @@ var DigitalBitsSdk =
 	    };
 	}
 
-	Async.prototype._drainQueue = function(queue) {
+	function _drainQueue(queue) {
 	    while (queue.length() > 0) {
-	        var fn = queue.shift();
-	        if (typeof fn !== "function") {
-	            fn._settlePromises();
-	            continue;
-	        }
+	        _drainQueueStep(queue);
+	    }
+	}
+
+	function _drainQueueStep(queue) {
+	    var fn = queue.shift();
+	    if (typeof fn !== "function") {
+	        fn._settlePromises();
+	    } else {
 	        var receiver = queue.shift();
 	        var arg = queue.shift();
 	        fn.call(receiver, arg);
 	    }
-	};
+	}
 
 	Async.prototype._drainQueues = function () {
-	    this._drainQueue(this._normalQueue);
+	    _drainQueue(this._normalQueue);
 	    this._reset();
 	    this._haveDrainedQueues = true;
-	    this._drainQueue(this._lateQueue);
+	    _drainQueue(this._lateQueue);
 	};
 
 	Async.prototype._queueTick = function () {
@@ -24679,6 +24688,7 @@ var DigitalBitsSdk =
 	var async = Promise._async;
 	var Warning = __webpack_require__(204).Warning;
 	var util = __webpack_require__(199);
+	var es5 = __webpack_require__(200);
 	var canAttachTrace = util.canAttachTrace;
 	var unhandledRejectionHandled;
 	var possiblyUnhandledRejection;
@@ -24797,6 +24807,7 @@ var DigitalBitsSdk =
 	    if (!config.longStackTraces && longStackTracesIsSupported()) {
 	        var Promise_captureStackTrace = Promise.prototype._captureStackTrace;
 	        var Promise_attachExtraTrace = Promise.prototype._attachExtraTrace;
+	        var Promise_dereferenceTrace = Promise.prototype._dereferenceTrace;
 	        config.longStackTraces = true;
 	        disableLongStackTraces = function() {
 	            if (async.haveItemsQueued() && !config.longStackTraces) {
@@ -24804,12 +24815,14 @@ var DigitalBitsSdk =
 	            }
 	            Promise.prototype._captureStackTrace = Promise_captureStackTrace;
 	            Promise.prototype._attachExtraTrace = Promise_attachExtraTrace;
+	            Promise.prototype._dereferenceTrace = Promise_dereferenceTrace;
 	            Context.deactivateLongStackTraces();
 	            async.enableTrampoline();
 	            config.longStackTraces = false;
 	        };
 	        Promise.prototype._captureStackTrace = longStackTracesCaptureStackTrace;
 	        Promise.prototype._attachExtraTrace = longStackTracesAttachExtraTrace;
+	        Promise.prototype._dereferenceTrace = longStackTracesDereferenceTrace;
 	        Context.activateLongStackTraces();
 	        async.disableTrampolineIfNecessary();
 	    }
@@ -24825,10 +24838,14 @@ var DigitalBitsSdk =
 	            var event = new CustomEvent("CustomEvent");
 	            util.global.dispatchEvent(event);
 	            return function(name, event) {
-	                var domEvent = new CustomEvent(name.toLowerCase(), {
+	                var eventData = {
 	                    detail: event,
 	                    cancelable: true
-	                });
+	                };
+	                es5.defineProperty(
+	                    eventData, "promise", {value: event.promise});
+	                es5.defineProperty(eventData, "reason", {value: event.reason});
+	                var domEvent = new CustomEvent(name.toLowerCase(), eventData);
 	                return !util.global.dispatchEvent(domEvent);
 	            };
 	        } else if (typeof Event === "function") {
@@ -24839,6 +24856,8 @@ var DigitalBitsSdk =
 	                    cancelable: true
 	                });
 	                domEvent.detail = event;
+	                es5.defineProperty(domEvent, "promise", {value: event.promise});
+	                es5.defineProperty(domEvent, "reason", {value: event.reason});
 	                return !util.global.dispatchEvent(domEvent);
 	            };
 	        } else {
@@ -24987,6 +25006,7 @@ var DigitalBitsSdk =
 	};
 	Promise.prototype._captureStackTrace = function () {};
 	Promise.prototype._attachExtraTrace = function () {};
+	Promise.prototype._dereferenceTrace = function () {};
 	Promise.prototype._clearCancellationData = function() {};
 	Promise.prototype._propagateFrom = function (parent, flags) {
 	    ;
@@ -25090,6 +25110,10 @@ var DigitalBitsSdk =
 	            util.notEnumerableProp(error, "__stackCleaned__", true);
 	        }
 	    }
+	}
+
+	function longStackTracesDereferenceTrace() {
+	    this._trace = undefined;
 	}
 
 	function checkForgottenReturns(returnValue, promiseCreated, name, promise,
@@ -28373,8 +28397,8 @@ var DigitalBitsSdk =
 	 * The balances section in the returned JSON will also list all the trust lines this account has set up.
 	 * It also contains {@link Account} object and exposes it's methods so can be used in {@link TransactionBuilder}.
 	 *
-	 * @see [Account Details](https://developer.digitalbits.io/horizon/reference/accounts-single.html)
-	 * @param {string} response Response from horizon account endpoint.
+	 * @see [Account Details](https://developer.digitalbits.io/frontier/reference/accounts-single.html)
+	 * @param {string} response Response from frontier account endpoint.
 	 * @returns {AccountResponse}
 	 */
 
@@ -47539,7 +47563,7 @@ var DigitalBitsSdk =
 	    this.timebounds = clone(opts.timebounds);
 	    this.memo = opts.memo || Memo.none();
 
-	    // the signed base64 form of the transaction to be sent to Horizon
+	    // the signed base64 form of the transaction to be sent to Frontier
 	    this.blob = null;
 	  }
 
@@ -47770,10 +47794,10 @@ var DigitalBitsSdk =
 	     * Creates a new {@link LedgerCallBuilder} pointed to server defined by serverUrl.
 	     *
 	     * Do not create this object directly, use {@link Server#ledgers}.
-	     * @see [All Ledgers](https://developer.digitalbits.io/horizon/reference/ledgers-all.html)
+	     * @see [All Ledgers](https://developer.digitalbits.io/frontier/reference/ledgers-all.html)
 	     * @constructor
 	     * @extends CallBuilder
-	     * @param {string} serverUrl Horizon server URL.
+	     * @param {string} serverUrl Frontier server URL.
 	     */
 
 	    function LedgerCallBuilder(serverUrl) {
@@ -47829,10 +47853,10 @@ var DigitalBitsSdk =
 	     * Creates a new {@link TransactionCallBuilder} pointed to server defined by serverUrl.
 	     *
 	     * Do not create this object directly, use {@link Server#transactions}.
-	     * @see [All Transactions](https://developer.digitalbits.io/horizon/reference/transactions-all.html)
+	     * @see [All Transactions](https://developer.digitalbits.io/frontier/reference/transactions-all.html)
 	     * @constructor
 	     * @extends CallBuilder
-	     * @param {string} serverUrl Horizon server URL.
+	     * @param {string} serverUrl Frontier server URL.
 	     */
 
 	    function TransactionCallBuilder(serverUrl) {
@@ -47844,7 +47868,7 @@ var DigitalBitsSdk =
 
 	    /**
 	     * The transaction details endpoint provides information on a single transaction. The transaction hash provided in the hash argument specifies which transaction to load.
-	     * @see [Transaction Details](https://developer.digitalbits.io/horizon/reference/transactions-single.html)
+	     * @see [Transaction Details](https://developer.digitalbits.io/frontier/reference/transactions-single.html)
 	     * @param {string} transactionId Transaction ID
 	     * @returns {TransactionCallBuilder}
 	     */
@@ -47858,7 +47882,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all transactions that affected a given account.
-	         * @see [Transactions for Account](https://developer.digitalbits.io/horizon/reference/transactions-for-account.html)
+	         * @see [Transactions for Account](https://developer.digitalbits.io/frontier/reference/transactions-for-account.html)
 	         * @param {string} accountId For example: `GDGQVOKHW4VEJRU2TETD6DBRKEO5ERCNF353LW5WBFW3JJWQ2BRQ6KDD`
 	         * @returns {TransactionCallBuilder}
 	         */
@@ -47871,7 +47895,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all transactions in a given ledger.
-	         * @see [Transactions for Ledger](https://developer.digitalbits.io/horizon/reference/transactions-for-ledger.html)
+	         * @see [Transactions for Ledger](https://developer.digitalbits.io/frontier/reference/transactions-for-ledger.html)
 	         * @param {number|string} sequence Ledger sequence
 	         * @returns {TransactionCallBuilder}
 	         */
@@ -47918,10 +47942,10 @@ var DigitalBitsSdk =
 	     * Creates a new {@link OperationCallBuilder} pointed to server defined by serverUrl.
 	     *
 	     * Do not create this object directly, use {@link Server#operations}.
-	     * @see [All Operations](https://developer.digitalbits.io/horizon/reference/operations-all.html)
+	     * @see [All Operations](https://developer.digitalbits.io/frontier/reference/operations-all.html)
 	     * @constructor
 	     * @extends CallBuilder
-	     * @param {string} serverUrl Horizon server URL.
+	     * @param {string} serverUrl Frontier server URL.
 	     */
 
 	    function OperationCallBuilder(serverUrl) {
@@ -47934,7 +47958,7 @@ var DigitalBitsSdk =
 	    /**
 	     * The operation details endpoint provides information on a single operation. The operation ID provided in the id
 	     * argument specifies which operation to load.
-	     * @see [Operation Details](https://developer.digitalbits.io/horizon/reference/operations-single.html)
+	     * @see [Operation Details](https://developer.digitalbits.io/frontier/reference/operations-single.html)
 	     * @param {number} operationId Operation ID
 	     * @returns {OperationCallBuilder}
 	     */
@@ -47948,7 +47972,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all operations that were included in valid transactions that affected a particular account.
-	         * @see [Operations for Account](https://developer.digitalbits.io/horizon/reference/operations-for-account.html)
+	         * @see [Operations for Account](https://developer.digitalbits.io/frontier/reference/operations-for-account.html)
 	         * @param {string} accountId For example: `GDGQVOKHW4VEJRU2TETD6DBRKEO5ERCNF353LW5WBFW3JJWQ2BRQ6KDD`
 	         * @returns {OperationCallBuilder}
 	         */
@@ -47962,7 +47986,7 @@ var DigitalBitsSdk =
 	        /**
 	         * This endpoint returns all operations that occurred in a given ledger.
 	         *
-	         * @see [Operations for Ledger](https://developer.digitalbits.io/horizon/reference/operations-for-ledger.html)
+	         * @see [Operations for Ledger](https://developer.digitalbits.io/frontier/reference/operations-for-ledger.html)
 	         * @param {number|string} sequence Ledger sequence
 	         * @returns {OperationCallBuilder}
 	         */
@@ -47978,7 +48002,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all operations that are part of a given transaction.
-	         * @see [Operations for Transaction](https://developer.digitalbits.io/horizon/reference/operations-for-transaction.html)
+	         * @see [Operations for Transaction](https://developer.digitalbits.io/frontier/reference/operations-for-transaction.html)
 	         * @param {string} transactionId Transaction ID
 	         * @returns {OperationCallBuilder}
 	         */
@@ -48021,8 +48045,8 @@ var DigitalBitsSdk =
 	 * Creates a new {@link OfferCallBuilder} pointed to server defined by serverUrl.
 	 *
 	 * Do not create this object directly, use {@link Server#offers}.
-	 * @see [Offers for Account](https://developer.digitalbits.io/horizon/reference/offers-for-account.html)
-	 * @param {string} serverUrl Horizon server URL.
+	 * @see [Offers for Account](https://developer.digitalbits.io/frontier/reference/offers-for-account.html)
+	 * @param {string} serverUrl Frontier server URL.
 	 * @param {string} resource Resource to query offers
 	 * @param {...string} resourceParams Parameters for selected resource
 	 */
@@ -48072,8 +48096,8 @@ var DigitalBitsSdk =
 	 * Creates a new {@link OrderbookCallBuilder} pointed to server defined by serverUrl.
 	 *
 	 * Do not create this object directly, use {@link Server#orderbook}.
-	 * @see [Orderbook Details](https://developer.digitalbits.io/horizon/reference/orderbook-details.html)
-	 * @param {string} serverUrl serverUrl Horizon server URL.
+	 * @see [Orderbook Details](https://developer.digitalbits.io/frontier/reference/orderbook-details.html)
+	 * @param {string} serverUrl serverUrl Frontier server URL.
 	 * @param {Asset} selling Asset being sold
 	 * @param {Asset} buying Asset being bought
 	 */
@@ -48131,8 +48155,8 @@ var DigitalBitsSdk =
 	 * Creates a new {@link TradesCallBuilder} pointed to server defined by serverUrl.
 	 *
 	 * Do not create this object directly, use {@link Server#trades}.
-	 * @see [Trades](https://developer.digitalbits.io/horizon/reference/endpoints/trades.html)
-	 * @param {string} serverUrl serverUrl Horizon server URL.
+	 * @see [Trades](https://developer.digitalbits.io/frontier/reference/endpoints/trades.html)
+	 * @param {string} serverUrl serverUrl Frontier server URL.
 	 */
 
 	var TradesCallBuilder = (function (_CallBuilder) {
@@ -48219,13 +48243,13 @@ var DigitalBitsSdk =
 	 * * The source address
 	 * * The asset and amount that the destination account should receive
 	 *
-	 * As part of the search, horizon will load a list of assets available to the source address and will find any
+	 * As part of the search, frontier will load a list of assets available to the source address and will find any
 	 * payment paths from those source assets to the desired destination asset. The search's amount parameter will be
 	 * used to determine if there a given path can satisfy a payment of the desired amount.
 	 *
 	 * Do not create this object directly, use {@link Server#paths}.
-	 * @see [Find Payment Paths](https://developer.digitalbits.io/horizon/reference/path-finding.html)
-	 * @param {string} serverUrl Horizon server URL.
+	 * @see [Find Payment Paths](https://developer.digitalbits.io/frontier/reference/path-finding.html)
+	 * @param {string} serverUrl Frontier server URL.
 	 * @param {string} source The sender's account ID. Any returned path must use a source that the sender can hold.
 	 * @param {string} destination The destination account ID that any returned path should use.
 	 * @param {Asset} destinationAsset The destination asset.
@@ -48285,10 +48309,10 @@ var DigitalBitsSdk =
 	     * Creates a new {@link PaymentCallBuilder} pointed to server defined by serverUrl.
 	     *
 	     * Do not create this object directly, use {@link Server#payments}.
-	     * @see [All Payments](https://developer.digitalbits.io/horizon/reference/payments-all.html)
+	     * @see [All Payments](https://developer.digitalbits.io/frontier/reference/payments-all.html)
 	     * @constructor
 	     * @extends CallBuilder
-	     * @param {string} serverUrl Horizon server URL.
+	     * @param {string} serverUrl Frontier server URL.
 	     */
 
 	    function PaymentCallBuilder(serverUrl) {
@@ -48300,7 +48324,7 @@ var DigitalBitsSdk =
 
 	    /**
 	     * This endpoint responds with a collection of Payment operations where the given account was either the sender or receiver.
-	     * @see [Payments for Account](https://developer.digitalbits.io/horizon/reference/payments-for-account.html)
+	     * @see [Payments for Account](https://developer.digitalbits.io/frontier/reference/payments-for-account.html)
 	     * @param {string} accountId For example: `GDGQVOKHW4VEJRU2TETD6DBRKEO5ERCNF353LW5WBFW3JJWQ2BRQ6KDD`
 	     * @returns {PaymentCallBuilder}
 	     */
@@ -48314,7 +48338,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all payment operations that are part of a valid transactions in a given ledger.
-	         * @see [Payments for Ledger](https://developer.digitalbits.io/horizon/reference/payments-for-ledger.html)
+	         * @see [Payments for Ledger](https://developer.digitalbits.io/frontier/reference/payments-for-ledger.html)
 	         * @param {number|string} sequence Ledger sequence
 	         * @returns {PaymentCallBuilder}
 	         */
@@ -48330,7 +48354,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all payment operations that are part of a given transaction.
-	         * @see [Payments for Transaction](https://developer.digitalbits.io/horizon/reference/payments-for-transaction.html)
+	         * @see [Payments for Transaction](https://developer.digitalbits.io/frontier/reference/payments-for-transaction.html)
 	         * @param {string} transactionId Transaction ID
 	         * @returns {PaymentCallBuilder}
 	         */
@@ -48379,9 +48403,9 @@ var DigitalBitsSdk =
 	     * Creates a new {@link EffectCallBuilder} pointed to server defined by serverUrl.
 	     *
 	     * Do not create this object directly, use {@link Server#effects}.
-	     * @see [All Effects](https://developer.digitalbits.io/horizon/reference/effects-all.html)
+	     * @see [All Effects](https://developer.digitalbits.io/frontier/reference/effects-all.html)
 	     * @constructor
-	     * @param {string} serverUrl Horizon server URL.
+	     * @param {string} serverUrl Frontier server URL.
 	     */
 
 	    function EffectCallBuilder(serverUrl) {
@@ -48393,7 +48417,7 @@ var DigitalBitsSdk =
 
 	    /**
 	     * This endpoint represents all effects that changed a given account. It will return relevant effects from the creation of the account to the current ledger.
-	     * @see [Effects for Account](https://developer.digitalbits.io/horizon/reference/effects-for-account.html)
+	     * @see [Effects for Account](https://developer.digitalbits.io/frontier/reference/effects-for-account.html)
 	     * @param {string} accountId For example: `GDGQVOKHW4VEJRU2TETD6DBRKEO5ERCNF353LW5WBFW3JJWQ2BRQ6KDD`
 	     * @returns {EffectCallBuilder}
 	     */
@@ -48409,7 +48433,7 @@ var DigitalBitsSdk =
 	         * Effects are the specific ways that the ledger was changed by any operation.
 	         *
 	         * This endpoint represents all effects that occurred in the given ledger.
-	         * @see [Effects for Ledger](https://developer.digitalbits.io/horizon/reference/effects-for-ledger.html)
+	         * @see [Effects for Ledger](https://developer.digitalbits.io/frontier/reference/effects-for-ledger.html)
 	         * @param {number|string} sequence Ledger sequence
 	         * @returns {EffectCallBuilder}
 	         */
@@ -48425,7 +48449,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all effects that occurred as a result of a given transaction.
-	         * @see [Effects for Transaction](https://developer.digitalbits.io/horizon/reference/effects-for-transaction.html)
+	         * @see [Effects for Transaction](https://developer.digitalbits.io/frontier/reference/effects-for-transaction.html)
 	         * @param {string} transactionId Transaction ID
 	         * @returns {EffectCallBuilder}
 	         */
@@ -48438,7 +48462,7 @@ var DigitalBitsSdk =
 
 	        /**
 	         * This endpoint represents all effects that occurred as a result of a given operation.
-	         * @see [Effects for Operation](https://developer.digitalbits.io/horizon/reference/effects-for-operation.html)
+	         * @see [Effects for Operation](https://developer.digitalbits.io/frontier/reference/effects-for-operation.html)
 	         * @param {number} operationId Operation ID
 	         * @returns {EffectCallBuilder}
 	         */
@@ -48515,7 +48539,7 @@ var DigitalBitsSdk =
 	 * Do not create this object directly, use {@link Server#assets}.
 	 * @constructor
 	 * @extends CallBuilder
-	 * @param {string} serverUrl Horizon server URL.
+	 * @param {string} serverUrl Frontier server URL.
 	 */
 
 	var AssetsCallBuilder = (function (_CallBuilder) {
@@ -48586,7 +48610,7 @@ var DigitalBitsSdk =
 	/**
 	 * Trade Aggregations facilitate efficient gathering of historical trade data
 	 * Do not create this object directly, use {@link Server#tradeAggregation}.
-	 * @param {string} serverUrl serverUrl Horizon server URL.
+	 * @param {string} serverUrl serverUrl Frontier server URL.
 	 * @param {Asset} base base asset
 	 * @param {Asset} counter counter asset
 	 * @param {long} start_time lower time boundary represented as millis since epoch
